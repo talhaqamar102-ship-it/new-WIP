@@ -249,10 +249,10 @@ const SAMPLE_DATA = {
 // Pure inline SVG Logo (Monochrome)
 const LOGO_SVG = `
 <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="46" stroke="#18181b" stroke-width="5" />
-  <circle cx="50" cy="50" r="36" stroke="#71717a" stroke-width="2" />
-  <path d="M42 66V44L52 50V40L62 46V66H42Z" fill="#18181b" />
-  <rect x="34" y="66" width="32" height="4" fill="#18181b" rx="1" />
+  <circle cx="50" cy="50" r="46" style="stroke: var(--ink-950)" stroke-width="5" />
+  <circle cx="50" cy="50" r="36" style="stroke: var(--ink-500)" stroke-width="2" />
+  <path d="M42 66V44L52 50V40L62 46V66H42Z" style="fill: var(--ink-900)" />
+  <rect x="34" y="66" width="32" height="4" style="fill: var(--ink-900)" rx="1" />
 </svg>
 `;
 
@@ -388,11 +388,11 @@ function renderSecretPasswordOverlay(): string {
           <span class="secret-auth-tag">RESTRICTED</span>
         </div>
         <div class="secret-auth-body">
-          <p style="margin: 0 0 14px; font-size: 12.5px; color: #52525b; line-height: 1.5;">
+          <p style="margin: 0 0 14px; font-size: 12.5px; color: var(--ink-600); line-height: 1.5;">
             Enter the Super User authorization passphrase to unlock master system configuration and database administration.
           </p>
           <div>
-            <label style="font-size: 11px; font-weight: 700; color: #27272a; text-transform: uppercase; letter-spacing: 0.03em;">Authorization Passphrase</label>
+            <label style="font-size: 11px; font-weight: 700; color: var(--ink-800); text-transform: uppercase; letter-spacing: 0.03em;">Authorization Passphrase</label>
             <input
               type="password"
               id="secret-admin-password-input"
@@ -401,7 +401,7 @@ function renderSecretPasswordOverlay(): string {
               autocomplete="off"
             />
             ${state.passwordError ? `
-              <div style="color: #09090b; font-size: 11.5px; font-weight: 600; margin-top: 6px;">
+              <div style="color: var(--ink-950); font-size: 11.5px; font-weight: 600; margin-top: 6px;">
                 ${state.passwordError}
               </div>
             ` : ''}
@@ -516,7 +516,7 @@ function renderScreenGRN(): string {
             <tbody>
               ${state.grnList.length === 0 ? `
                 <tr>
-                  <td colspan="11" class="text-center" style="padding: 32px 16px; color: #71717a; font-size: 13px;">
+                  <td colspan="11" class="text-center" style="padding: 32px 16px; color: var(--ink-500); font-size: 13px;">
                     No records found in Store Register. Enter details above and click <strong>Post Goods Receipt (GRN)</strong> to record an entry.
                   </td>
                 </tr>
@@ -597,19 +597,19 @@ function renderScreenPacking(): string {
           </div>
           <div class="form-group" style="flex: 1; min-width: 120px;">
             <label>Buyer</label>
-            <div id="wip-disp-buyer" style="font-weight: 700; color: #09090b; padding: 7px 0; font-size: 13px;">${wip.buyer || '---'}</div>
+            <div id="wip-disp-buyer" style="font-weight: 700; color: var(--ink-950); padding: 7px 0; font-size: 13px;">${wip.buyer || '---'}</div>
           </div>
           <div class="form-group" style="flex: 0.8; min-width: 90px;">
             <label>PO Number</label>
-            <div id="wip-disp-po" style="font-weight: 700; color: #09090b; padding: 7px 0; font-size: 13px;">${wip.po || '---'}</div>
+            <div id="wip-disp-po" style="font-weight: 700; color: var(--ink-950); padding: 7px 0; font-size: 13px;">${wip.po || '---'}</div>
           </div>
           <div class="form-group" style="flex: 1.2; min-width: 150px;">
             <label>Article</label>
-            <div id="wip-disp-article" style="font-weight: 700; color: #09090b; padding: 7px 0; font-size: 13px;">${wip.article || '---'}</div>
+            <div id="wip-disp-article" style="font-weight: 700; color: var(--ink-950); padding: 7px 0; font-size: 13px;">${wip.article || '---'}</div>
           </div>
           <div class="form-group" style="flex: 1; min-width: 110px;">
             <label>Planned Qty</label>
-            <div id="wip-disp-qty" style="font-weight: 700; color: #09090b; padding: 7px 0; font-size: 13px;">${wip.plannedQty.toLocaleString()} Pairs</div>
+            <div id="wip-disp-qty" style="font-weight: 700; color: var(--ink-950); padding: 7px 0; font-size: 13px;">${wip.plannedQty.toLocaleString()} Pairs</div>
           </div>
           <div class="form-group" style="flex: 1; min-width: 130px;">
             <label>Active Lot ID</label>
@@ -626,10 +626,10 @@ function renderScreenPacking(): string {
       <!-- 5-Stage WIP Floor Process Pipeline -->
       <section>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-          <h3 style="font-size: 12.5px; font-weight: 700; color: #09090b; text-transform: uppercase; letter-spacing: 0.04em; margin: 0;">
+          <h3 style="font-size: 12.5px; font-weight: 700; color: var(--ink-950); text-transform: uppercase; letter-spacing: 0.04em; margin: 0;">
             5-Stage WIP Floor Process Pipeline
           </h3>
-          <span style="font-size: 11.5px; color: #71717a;">Closed-Loop Rework Route &bull; Direct Hand-off to Bay #2</span>
+          <span style="font-size: 11.5px; color: var(--ink-500);">Closed-Loop Rework Route &bull; Direct Hand-off to Bay #2</span>
         </div>
 
         <div style="display: flex; gap: 12px; overflow-x: auto; padding-bottom: 4px;">
@@ -673,7 +673,7 @@ function renderScreenPacking(): string {
           </div>
 
           <!-- REQUISITION SLIP GENERATOR -->
-          <div class="pipeline-stage-card" style="background: #fafafa; border-style: dashed;">
+          <div class="pipeline-stage-card" style="background: var(--ink-50); border-style: dashed;">
             <div>
               <div class="pipeline-stage-header">Accessories Requisition</div>
               <div class="pipeline-stage-metric"><span>Slip No:</span> <strong id="wip-mreq-no">${wip.mreqNo}</strong></div>
@@ -745,7 +745,7 @@ function renderScreenPacking(): string {
                     <td>${d.defectClass}</td>
                     <td class="text-right font-bold">${d.qty}</td>
                     <td><span class="status-pill">${d.status}</span></td>
-                    <td style="font-size: 11px; color: #52525b;">Return to Stage 1</td>
+                    <td style="font-size: 11px; color: var(--ink-600);">Return to Stage 1</td>
                   </tr>
                 `).join('')}
               </tbody>
@@ -908,7 +908,7 @@ function renderScreenRepair(): string {
             <tbody>
               ${state.defectList.length === 0 ? `
                 <tr>
-                  <td colspan="11" class="text-center" style="padding: 30px 16px; color: #71717a;">
+                  <td colspan="11" class="text-center" style="padding: 30px 16px; color: var(--ink-500);">
                     No defect rework tickets currently active in Bay #2.
                   </td>
                 </tr>
@@ -986,7 +986,7 @@ function renderScreenQC(): string {
             <span>Order Total: <strong>${state.qcOrder.orderTotal || '3,090 Pairs'}</strong></span>
           </div>
           <div>
-            <span class="badge-aql-passed" style="background-color: ${allPassed ? '#18181b' : '#71717a'};">
+            <span class="badge-aql-passed" style="background-color: ${allPassed ? 'var(--ink-950)' : 'var(--ink-500)'};">
               ${allPassed ? 'AQL PASSED - APPROVED FOR EXPORT' : 'INSPECTION PENDING'}
             </span>
           </div>
@@ -1012,18 +1012,18 @@ function renderScreenQC(): string {
           <div class="checklist-container">
             ${state.qcChecklist.map(item => `
               <div class="checklist-item" onclick="window.toggleQcCheck('${item.id}')" style="cursor: pointer;">
-                <div class="checklist-box" style="background-color: ${item.passed ? '#18181b' : '#a1a1aa'};">
+                <div class="checklist-box" style="background-color: ${item.passed ? 'var(--ink-950)' : 'var(--ink-400)'};">
                   ✓
                 </div>
                 <div class="checklist-content">
                   <span class="checklist-title">${item.title}</span>
-                  ${item.details ? `<span class="${item.passed ? 'checklist-status-pass' : ''}" style="font-size: 11.5px; color: ${item.passed ? '#18181b' : '#71717a'};">${item.details} ${item.passed ? '— PASS' : ''}</span>` : ''}
+                  ${item.details ? `<span class="${item.passed ? 'checklist-status-pass' : ''}" style="font-size: 11.5px; color: ${item.passed ? 'var(--ink-950)' : 'var(--ink-500)'};">${item.details} ${item.passed ? '— PASS' : ''}</span>` : ''}
                 </div>
               </div>
             `).join('')}
 
             <div class="inspector-stamp-card">
-              <div class="stamp-badge-icon" style="background-color: ${allPassed ? '#18181b' : '#a1a1aa'};">✓</div>
+              <div class="stamp-badge-icon" style="background-color: ${allPassed ? 'var(--ink-950)' : 'var(--ink-400)'};">✓</div>
               <div>
                 <div class="stamp-text-title">${allPassed ? 'Approved by QA Inspector Tariq Mehmood' : 'Pending Final QA Inspection Sign-off'}</div>
                 <div class="stamp-text-sub">(QC ID: ${allPassed ? '4402' : '---'})</div>
@@ -1054,7 +1054,7 @@ function renderScreenQC(): string {
               <tbody>
                 ${state.cartons.length === 0 ? `
                   <tr>
-                    <td colspan="8" class="text-center" style="padding: 28px 16px; color: #71717a;">
+                    <td colspan="8" class="text-center" style="padding: 28px 16px; color: var(--ink-500);">
                       No cartons loaded in manifest.
                     </td>
                   </tr>
@@ -1148,7 +1148,7 @@ function renderScreenAdmin(): string {
             </thead>
             <tbody>
               ${ov.receivings.length === 0 ? `
-                <tr><td colspan="11" class="text-center" style="padding: 20px; color: #71717a;">No receiving records found.</td></tr>
+                <tr><td colspan="11" class="text-center" style="padding: 20px; color: var(--ink-500);">No receiving records found.</td></tr>
               ` : ov.receivings.map((r: any) => `
                 <tr>
                   <td class="font-bold">${r.rcv_number || `#${r.id}`}</td>
@@ -1287,7 +1287,7 @@ function renderScreenAdmin(): string {
         </div>
         <div class="two-column-grid" style="padding: 14px 16px;">
           <div>
-            <div style="font-size: 11.5px; font-weight: 700; color: #52525b; margin-bottom: 6px; text-transform: uppercase;">Active Makers / Contractors (${state.dropdownOptions.makers.length})</div>
+            <div style="font-size: 11.5px; font-weight: 700; color: var(--ink-600); margin-bottom: 6px; text-transform: uppercase;">Active Makers / Contractors (${state.dropdownOptions.makers.length})</div>
             <div style="display: flex; gap: 8px; margin-bottom: 10px;">
               <input type="text" id="admin-add-maker-input" class="form-input" style="flex: 1;" placeholder="Add Maker / Contractor (e.g. Usman Hall عثمان ہال)" />
               <button class="btn-primary" id="btn-admin-add-maker">Add Maker</button>
@@ -1302,7 +1302,7 @@ function renderScreenAdmin(): string {
             </div>
           </div>
           <div>
-            <div style="font-size: 11.5px; font-weight: 700; color: #52525b; margin-bottom: 6px; text-transform: uppercase;">Active Purchase Order Numbers (${state.dropdownOptions.poList.length})</div>
+            <div style="font-size: 11.5px; font-weight: 700; color: var(--ink-600); margin-bottom: 6px; text-transform: uppercase;">Active Purchase Order Numbers (${state.dropdownOptions.poList.length})</div>
             <div style="display: flex; gap: 8px; margin-bottom: 10px;">
               <input type="text" id="admin-add-po-input" class="form-input" style="flex: 1;" placeholder="Add PO Number (e.g. 27401)" />
               <button class="btn-primary" id="btn-admin-add-po">Add PO #</button>
@@ -1348,7 +1348,7 @@ function renderScreenAdmin(): string {
             </thead>
             <tbody>
               ${ov.alterations.length === 0 ? `
-                <tr><td colspan="10" class="text-center" style="padding: 18px; color: #71717a;">No alteration records in SQLite.</td></tr>
+                <tr><td colspan="10" class="text-center" style="padding: 18px; color: var(--ink-500);">No alteration records in SQLite.</td></tr>
               ` : ov.alterations.map((a: any) => `
                 <tr>
                   <td class="font-bold">ALT-${a.id}</td>
@@ -1402,7 +1402,7 @@ function renderScreenAdmin(): string {
             </thead>
             <tbody>
               ${ov.scrapLedger.length === 0 ? `
-                <tr><td colspan="7" class="text-center" style="padding: 18px; color: #71717a;">Zero condemned scrap records.</td></tr>
+                <tr><td colspan="7" class="text-center" style="padding: 18px; color: var(--ink-500);">Zero condemned scrap records.</td></tr>
               ` : ov.scrapLedger.map((s: any) => `
                 <tr>
                   <td class="font-bold">#${s.id}</td>
@@ -1434,7 +1434,7 @@ function renderScreenAdmin(): string {
             <span class="admin-meta-caption">Engine: ${String(ov.dbHealth.journalMode).toUpperCase()} Mode</span>
           </div>
           <div style="padding: 16px;">
-            <p style="font-size: 12.5px; color: #52525b; line-height: 1.6; margin-bottom: 16px;">
+            <p style="font-size: 12.5px; color: var(--ink-600); line-height: 1.6; margin-bottom: 16px;">
               The Meridian Works MES database operates on native Node.js SQLite configured with <strong>Write-Ahead Logging (WAL)</strong>, <code>PRAGMA synchronous = NORMAL</code>, and foreign key integrity enforcement.
             </p>
             <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -1449,9 +1449,9 @@ function renderScreenAdmin(): string {
               </button>
             </div>
             ${state.lastBackupPath ? `
-              <div style="margin-top: 14px; padding: 10px 12px; background: #fafafa; border: 1px solid #d4d4d8; border-radius: 4px; font-size: 12px; color: #27272a;">
-                <div style="font-weight: 700; color: #09090b; margin-bottom: 2px;">Latest Snapshot File</div>
-                <code style="word-break: break-all; color: #52525b;">${state.lastBackupPath}</code>
+              <div style="margin-top: 14px; padding: 10px 12px; background: var(--ink-50); border: 1px solid var(--border-strong); border-radius: 4px; font-size: 12px; color: var(--ink-800);">
+                <div style="font-weight: 700; color: var(--ink-950); margin-bottom: 2px;">Latest Snapshot File</div>
+                <code style="word-break: break-all; color: var(--ink-600);">${state.lastBackupPath}</code>
               </div>
             ` : ''}
           </div>
@@ -1753,11 +1753,17 @@ function attachEventHandlers(): void {
     });
   });
 
-  // Secret Password Gate Verification ("wingardiumlaviosa")
+  // Secret Password Gate Verification.
+  // The passphrase is supplied at build time via VITE_ADMIN_PASSPHRASE (see
+  // .env.example). It is never committed; when unset the gate stays locked.
+  const ADMIN_PASSPHRASE = (
+    ((import.meta as any).env?.VITE_ADMIN_PASSPHRASE as string | undefined) || ''
+  ).trim().toLowerCase();
+
   const verifySecretPassword = async () => {
     const pwdInput = document.getElementById('secret-admin-password-input') as HTMLInputElement;
     const entered = (pwdInput?.value || '').trim().toLowerCase();
-    if (entered === 'wingardiumlaviosa') {
+    if (ADMIN_PASSPHRASE && entered === ADMIN_PASSPHRASE) {
       state.showPasswordPrompt = false;
       state.passwordError = '';
       state.isAdminUnlocked = true;
@@ -1917,8 +1923,8 @@ function attachGRNHandlers(): void {
     const docHtml = `
       <div class="printable-slip-box">
         <div class="printable-slip-header">
-          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #09090b;">MERIDIAN WORKS &bull; GOODS RECEIVING NOTE (GRN)</h2>
-          <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: #52525b;">
+          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--ink-950);">MERIDIAN WORKS &bull; GOODS RECEIVING NOTE (GRN)</h2>
+          <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: var(--ink-600);">
             Dock #1 Inward Store Register &bull; Official Inward Goods Slip
           </p>
         </div>
@@ -1937,26 +1943,26 @@ function attachGRNHandlers(): void {
 
         <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12px;">
           <thead>
-            <tr style="background: #f4f4f5; color: #09090b;">
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">Size 7 / S</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">Size 8 / M</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">Size 9 / L</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">Size 10 / XL</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: center; background: #e4e4e7; font-weight: 800;">Total Received</th>
+            <tr style="background: var(--ink-100); color: var(--ink-950);">
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">Size 7 / S</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">Size 8 / M</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">Size 9 / L</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">Size 10 / XL</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: center; background: var(--ink-200); font-weight: 800;">Total Received</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">${Math.round(Number(rcvQty) * 0.2)} Prs</td>
-              <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">${Math.round(Number(rcvQty) * 0.3)} Prs</td>
-              <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">${Math.round(Number(rcvQty) * 0.35)} Prs</td>
-              <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">${Math.max(0, Number(rcvQty) - Math.round(Number(rcvQty) * 0.85))} Prs</td>
-              <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: center; font-weight: 800; color: #09090b; font-size: 13px;">${Number(rcvQty).toLocaleString()} Pairs</td>
+              <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">${Math.round(Number(rcvQty) * 0.2)} Prs</td>
+              <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">${Math.round(Number(rcvQty) * 0.3)} Prs</td>
+              <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">${Math.round(Number(rcvQty) * 0.35)} Prs</td>
+              <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">${Math.max(0, Number(rcvQty) - Math.round(Number(rcvQty) * 0.85))} Prs</td>
+              <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: center; font-weight: 800; color: var(--ink-950); font-size: 13px;">${Number(rcvQty).toLocaleString()} Pairs</td>
             </tr>
           </tbody>
         </table>
 
-        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 24px; border-top: 1px dashed #71717a; padding-top: 8px;">
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 24px; border-top: 1px dashed var(--ink-500); padding-top: 8px;">
           <span>Contractor Agent Sign: ___________________</span>
           <span>Dock #1 Receiver: ___________________</span>
           <span>Store Head Sign: ___________________</span>
@@ -1976,14 +1982,14 @@ function attachGRNHandlers(): void {
   document.getElementById('btn-print-grn-summary')?.addEventListener('click', () => {
     const tableRows = state.grnList.map((g, i) => `
       <tr>
-        <td style="border: 1px solid #d4d4d8; padding: 5px; text-align: center;">${i + 1}</td>
-        <td style="border: 1px solid #d4d4d8; padding: 5px;"><strong>${g.maker}</strong></td>
-        <td style="border: 1px solid #d4d4d8; padding: 5px;">${g.customer}</td>
-        <td style="border: 1px solid #d4d4d8; padding: 5px;">${g.po}</td>
-        <td style="border: 1px solid #d4d4d8; padding: 5px;"><strong>${g.article}</strong></td>
-        <td style="border: 1px solid #d4d4d8; padding: 5px; text-align: right;">${g.orderQty.toLocaleString()}</td>
-        <td style="border: 1px solid #d4d4d8; padding: 5px; text-align: right; font-weight: bold;">${g.rcvdPairs.toLocaleString()}</td>
-        <td style="border: 1px solid #d4d4d8; padding: 5px; text-align: right; font-weight: bold;">${g.balance.toLocaleString()}</td>
+        <td style="border: 1px solid var(--border-strong); padding: 5px; text-align: center;">${i + 1}</td>
+        <td style="border: 1px solid var(--border-strong); padding: 5px;"><strong>${g.maker}</strong></td>
+        <td style="border: 1px solid var(--border-strong); padding: 5px;">${g.customer}</td>
+        <td style="border: 1px solid var(--border-strong); padding: 5px;">${g.po}</td>
+        <td style="border: 1px solid var(--border-strong); padding: 5px;"><strong>${g.article}</strong></td>
+        <td style="border: 1px solid var(--border-strong); padding: 5px; text-align: right;">${g.orderQty.toLocaleString()}</td>
+        <td style="border: 1px solid var(--border-strong); padding: 5px; text-align: right; font-weight: bold;">${g.rcvdPairs.toLocaleString()}</td>
+        <td style="border: 1px solid var(--border-strong); padding: 5px; text-align: right; font-weight: bold;">${g.balance.toLocaleString()}</td>
       </tr>
     `).join('');
 
@@ -1994,35 +2000,35 @@ function attachGRNHandlers(): void {
     const docHtml = `
       <div class="printable-slip-box">
         <div class="printable-slip-header">
-          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #09090b;">MERIDIAN WORKS &bull; DAILY INWARD GOODS REGISTER SUMMARY</h2>
-          <p style="margin: 3px 0 0; font-size: 11px; text-transform: uppercase; color: #52525b;">
+          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--ink-950);">MERIDIAN WORKS &bull; DAILY INWARD GOODS REGISTER SUMMARY</h2>
+          <p style="margin: 3px 0 0; font-size: 11px; text-transform: uppercase; color: var(--ink-600);">
             Dock #1 Store Receiving Master Sheet &bull; Date: ${new Date().toLocaleDateString('en-GB')}
           </p>
         </div>
         <table style="width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 11px;">
           <thead>
-            <tr style="background: #f4f4f5; color: #09090b;">
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">#</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px;">Maker / Contractor</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px;">Customer</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px;">PO #</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px;">Article</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">Order Qty</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">Rcvd Pairs</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">Balance</th>
+            <tr style="background: var(--ink-100); color: var(--ink-950);">
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">#</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px;">Maker / Contractor</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px;">Customer</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px;">PO #</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px;">Article</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">Order Qty</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">Rcvd Pairs</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">Balance</th>
             </tr>
           </thead>
           <tbody>
             ${tableRows}
-            <tr style="background: #fafafa; font-weight: bold;">
-              <td colspan="5" style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">Total Daily Register Summary:</td>
-              <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">${totOrder.toLocaleString()}</td>
-              <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">${totRcvd.toLocaleString()}</td>
-              <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">${totBal.toLocaleString()}</td>
+            <tr style="background: var(--ink-50); font-weight: bold;">
+              <td colspan="5" style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">Total Daily Register Summary:</td>
+              <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">${totOrder.toLocaleString()}</td>
+              <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">${totRcvd.toLocaleString()}</td>
+              <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">${totBal.toLocaleString()}</td>
             </tr>
           </tbody>
         </table>
-        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 25px; border-top: 1px dashed #71717a; padding-top: 8px;">
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 25px; border-top: 1px dashed var(--ink-500); padding-top: 8px;">
           <span>Shift Supervisor: ___________________</span>
           <span>Store Manager: ___________________</span>
           <span>Accounts Audit: ___________________</span>
@@ -2122,12 +2128,12 @@ function attachRepairHandlers(): void {
     const qty = selQty || String(sample.qty);
 
     const docHtml = `
-      <div style="border: 2px dashed #18181b; padding: 18px; background: #ffffff; color: #09090b; font-family: sans-serif;">
-        <div style="text-align: center; border-bottom: 2px solid #18181b; padding-bottom: 10px; margin-bottom: 14px;">
-          <div style="font-size: 18px; font-weight: 800; color: #09090b; letter-spacing: 0.05em;">MANDATORY REWORK ROUTE TAG</div>
-          <div style="font-size: 12px; font-weight: bold; color: #52525b;">الٹریشن اور مرمت کا سرکاری روٹ کارڈ</div>
+      <div style="border: 2px dashed var(--ink-900); padding: 18px; background: var(--white); color: var(--ink-950); font-family: sans-serif;">
+        <div style="text-align: center; border-bottom: 2px solid var(--ink-900); padding-bottom: 10px; margin-bottom: 14px;">
+          <div style="font-size: 18px; font-weight: 800; color: var(--ink-950); letter-spacing: 0.05em;">MANDATORY REWORK ROUTE TAG</div>
+          <div style="font-size: 12px; font-weight: bold; color: var(--ink-600);">الٹریشن اور مرمت کا سرکاری روٹ کارڈ</div>
         </div>
-        <div class="printable-meta-grid" style="color: #09090b;">
+        <div class="printable-meta-grid" style="color: var(--ink-950);">
           <div><span>Defect Batch ID:</span> <strong>${batchId}</strong></div>
           <div><span>Origin Station:</span> <strong>Stage 1 (Checking &amp; Inspection)</strong></div>
           <div><span>Article Name:</span> <strong>${article}</strong></div>
@@ -2137,10 +2143,10 @@ function attachRepairHandlers(): void {
           <div><span>Assigned Master Tailor:</span> <strong>${tailor}</strong></div>
           <div><span>Max Rework Policy:</span> <strong>Strict 2-Cycle Limit &rarr; Auto-Scrap</strong></div>
         </div>
-        <div style="background: #f4f4f5; border: 1px solid #18181b; padding: 10px; border-radius: 4px; text-align: center; font-weight: 800; font-size: 12px; margin: 14px 0; color: #09090b;">
+        <div style="background: var(--ink-100); border: 1px solid var(--ink-900); padding: 10px; border-radius: 4px; text-align: center; font-weight: 800; font-size: 12px; margin: 14px 0; color: var(--ink-950);">
           SHOP-FLOOR ENFORCEMENT: ALL REPAIRED UNITS MUST RETURN DIRECTLY TO STAGE 1 CHECKING FOR 100% RE-INSPECTION. SKIPPING INSPECTION IS SYSTEM-BLOCKED.
         </div>
-        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 20px; border-top: 1px dashed #71717a; padding-top: 8px;">
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 20px; border-top: 1px dashed var(--ink-500); padding-top: 8px;">
           <span>Tailor Sign (درزی دستخط): _______________</span>
           <span>Alteration Bay Lead: _______________</span>
           <span>Re-Inspector Sign: _______________</span>
@@ -2160,14 +2166,14 @@ function attachRepairHandlers(): void {
   document.getElementById('btn-print-defect-sheet')?.addEventListener('click', () => {
     const tableRows = state.defectList.map((d, i) => `
       <tr>
-        <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">${i + 1}</td>
-        <td style="border: 1px solid #d4d4d8; padding: 6px;"><strong>${d.id}</strong></td>
-        <td style="border: 1px solid #d4d4d8; padding: 6px;">${d.article} (PO: ${d.po})</td>
-        <td style="border: 1px solid #d4d4d8; padding: 6px;"><strong>${d.defectClass}</strong></td>
-        <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: right; font-weight: bold;">${d.qty} Prs</td>
-        <td style="border: 1px solid #d4d4d8; padding: 6px;">${d.tailor}</td>
-        <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">Cycle 1 / 2</td>
-        <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: center; font-weight: bold;">${d.status}</td>
+        <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">${i + 1}</td>
+        <td style="border: 1px solid var(--border-strong); padding: 6px;"><strong>${d.id}</strong></td>
+        <td style="border: 1px solid var(--border-strong); padding: 6px;">${d.article} (PO: ${d.po})</td>
+        <td style="border: 1px solid var(--border-strong); padding: 6px;"><strong>${d.defectClass}</strong></td>
+        <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: right; font-weight: bold;">${d.qty} Prs</td>
+        <td style="border: 1px solid var(--border-strong); padding: 6px;">${d.tailor}</td>
+        <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">Cycle 1 / 2</td>
+        <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: center; font-weight: bold;">${d.status}</td>
       </tr>
     `).join('');
 
@@ -2176,34 +2182,34 @@ function attachRepairHandlers(): void {
     const docHtml = `
       <div class="printable-slip-box">
         <div class="printable-slip-header">
-          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #09090b;">MERIDIAN WORKS &bull; DAILY DEFECT &amp; ALTERATION SUMMARY LOG</h2>
-          <p style="margin: 3px 0 0; font-size: 11px; text-transform: uppercase; color: #52525b;">
+          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--ink-950);">MERIDIAN WORKS &bull; DAILY DEFECT &amp; ALTERATION SUMMARY LOG</h2>
+          <p style="margin: 3px 0 0; font-size: 11px; text-transform: uppercase; color: var(--ink-600);">
             Alteration &amp; Repair Bay #2 &bull; Pareto Analysis &amp; Tailor Attribution &bull; Date: ${new Date().toLocaleDateString('en-GB')}
           </p>
         </div>
         <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 11px;">
           <thead>
-            <tr style="background: #f4f4f5; color: #09090b;">
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">#</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px;">Batch ID</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px;">Article &amp; PO</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px;">Defect Reason</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">Pairs</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px;">Master Tailor</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">Reworks</th>
-              <th style="border: 1px solid #d4d4d8; padding: 6px; text-align: center;">Status</th>
+            <tr style="background: var(--ink-100); color: var(--ink-950);">
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">#</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px;">Batch ID</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px;">Article &amp; PO</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px;">Defect Reason</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">Pairs</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px;">Master Tailor</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">Reworks</th>
+              <th style="border: 1px solid var(--border-strong); padding: 6px; text-align: center;">Status</th>
             </tr>
           </thead>
           <tbody>
             ${tableRows}
-            <tr style="background: #fafafa; font-weight: bold;">
-              <td colspan="4" style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">Total Active Alteration Units:</td>
-              <td style="border: 1px solid #d4d4d8; padding: 6px; text-align: right;">${totDefects} Pairs</td>
-              <td colspan="3" style="border: 1px solid #d4d4d8; padding: 6px; text-align: center; color: #52525b;">(Enforcing 100% Return to Stage 1)</td>
+            <tr style="background: var(--ink-50); font-weight: bold;">
+              <td colspan="4" style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">Total Active Alteration Units:</td>
+              <td style="border: 1px solid var(--border-strong); padding: 6px; text-align: right;">${totDefects} Pairs</td>
+              <td colspan="3" style="border: 1px solid var(--border-strong); padding: 6px; text-align: center; color: var(--ink-600);">(Enforcing 100% Return to Stage 1)</td>
             </tr>
           </tbody>
         </table>
-        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 25px; border-top: 1px dashed #71717a; padding-top: 8px;">
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 25px; border-top: 1px dashed var(--ink-500); padding-top: 8px;">
           <span>Alteration Supervisor: ___________________</span>
           <span>Lead QA Inspector: ___________________</span>
           <span>Plant Production Manager: ___________________</span>
@@ -2220,10 +2226,10 @@ function attachRepairHandlers(): void {
 function attachQCHandlers(): void {
   document.getElementById('btn-print-carton-labels')?.addEventListener('click', () => {
     const docHtml = `
-      <div style="border: 2px solid #09090b; padding: 20px; font-family: monospace; background: #ffffff;">
-        <div style="text-align: center; border-bottom: 2px solid #09090b; padding-bottom: 10px; margin-bottom: 14px;">
-          <div style="font-size: 19px; font-weight: 800; color: #09090b;">MERIDIAN WORKS &bull; EXPORT MASTER CARTON</div>
-          <div style="font-size: 11px; color: #52525b;">INTERNATIONAL EXPORT SHIPPING LABEL &bull; THERMAL DIRECT / A4</div>
+      <div style="border: 2px solid var(--ink-950); padding: 20px; font-family: monospace; background: var(--white);">
+        <div style="text-align: center; border-bottom: 2px solid var(--ink-950); padding-bottom: 10px; margin-bottom: 14px;">
+          <div style="font-size: 19px; font-weight: 800; color: var(--ink-950);">MERIDIAN WORKS &bull; EXPORT MASTER CARTON</div>
+          <div style="font-size: 11px; color: var(--ink-600);">INTERNATIONAL EXPORT SHIPPING LABEL &bull; THERMAL DIRECT / A4</div>
         </div>
         <div class="printable-meta-grid" style="font-size: 12.5px;">
           <div><span>DESTINATION:</span> <strong>Northwind Safety Gear UK</strong></div>
@@ -2237,11 +2243,11 @@ function attachQCHandlers(): void {
           <div><span>QC TAMPER SEAL:</span> <strong>FSKD-4401 (VERIFIED)</strong></div>
           <div><span>AQL 1.5 AUDIT:</span> <strong>PASSED &bull; CLEARED FOR EXPORT</strong></div>
         </div>
-        <div style="border: 2px solid #09090b; padding: 14px; text-align: center; background: #fafafa; font-weight: 800; font-size: 15px; letter-spacing: 0.12em; margin: 14px 0;">
+        <div style="border: 2px solid var(--ink-950); padding: 14px; text-align: center; background: var(--ink-50); font-weight: 800; font-size: 15px; letter-spacing: 0.12em; margin: 14px 0;">
           ||||| ||||||| |||| |||||||| ||||| |||||| ||||||||<br/>
           *EAN13-5060129283741-CTN01*
         </div>
-        <div style="display: flex; justify-content: space-between; font-size: 11px; border-top: 1px dashed #09090b; padding-top: 8px;">
+        <div style="display: flex; justify-content: space-between; font-size: 11px; border-top: 1px dashed var(--ink-950); padding-top: 8px;">
           <span>Tamper Seal Status: VERIFIED &bull; INTACT</span>
           <span>Lead QA Inspector: Tariq Mehmood (QC ID: 4402)</span>
         </div>
@@ -2260,9 +2266,9 @@ function attachQCHandlers(): void {
   document.getElementById('btn-dispatch-gate')?.addEventListener('click', async () => {
     openModal('Export Dispatch Clearance Slip', `
       <div style="text-align: center; padding: 10px;">
-        <div style="color: #09090b; font-size: 32px; margin-bottom: 6px;">✓</div>
-        <h3 style="margin: 0; color: #09090b;">CONTAINER GATE RELEASE AUTHORIZED</h3>
-        <p style="color: #52525b; font-size: 13px; margin-top: 4px;">AQL 1.5 final clearance and carton manifest audit completed.</p>
+        <div style="color: var(--ink-950); font-size: 32px; margin-bottom: 6px;">✓</div>
+        <h3 style="margin: 0; color: var(--ink-950);">CONTAINER GATE RELEASE AUTHORIZED</h3>
+        <p style="color: var(--ink-600); font-size: 13px; margin-top: 4px;">AQL 1.5 final clearance and carton manifest audit completed.</p>
       </div>
     `);
   });
@@ -2301,7 +2307,7 @@ function attachPackingHandlers(): void {
   document.getElementById('btn-wip-step1')?.addEventListener('click', () => {
     openModal('Process Stage 1: Checking & Inspection', `
       <div style="font-size: 13px;">
-        <p style="margin-bottom: 12px; color: #475569;">
+        <p style="margin-bottom: 12px; color: var(--ink-600);">
           Separate first-pass good units from workmanship defects. Defect pairs are automatically isolated and routed to Alteration Bay #2.
         </p>
         <div class="form-group" style="margin-bottom: 12px;">
@@ -2365,7 +2371,7 @@ function attachPackingHandlers(): void {
   document.getElementById('btn-wip-step2')?.addEventListener('click', () => {
     openModal('Process Stage 2: Ironing & Brushing', `
       <div style="font-size: 13px;">
-        <p style="margin-bottom: 12px; color: #475569;">
+        <p style="margin-bottom: 12px; color: var(--ink-600);">
           Steam press, crease removal, thread trimming, and thermal flattening verification.
         </p>
         <div class="form-group" style="margin-bottom: 12px;">
@@ -2399,7 +2405,7 @@ function attachPackingHandlers(): void {
   document.getElementById('btn-wip-step3')?.addEventListener('click', () => {
     openModal('Process Stage 3: Pair Matching & BOM Calculation', `
       <div style="font-size: 13px;">
-        <p style="margin-bottom: 12px; color: #475569;">
+        <p style="margin-bottom: 12px; color: var(--ink-600);">
           Verify Left/Right grain alignment, leather shade consistency, and size fidelity. Auto-computes Bill of Materials (BOM) for polybags and packaging trims.
         </p>
         <div class="form-group" style="margin-bottom: 12px;">
@@ -2410,9 +2416,9 @@ function attachPackingHandlers(): void {
           <label>Mismatch / Unpaired Gloves:</label>
           <input type="number" id="step3-defect-input" class="form-input" value="${state.packingWip.stage3Defects}" />
         </div>
-        <div style="background: #f4f4f5; border: 1px solid #d4d4d8; border-radius: 4px; padding: 10px; margin-bottom: 14px;">
-          <div style="font-weight: 700; color: #09090b; margin-bottom: 4px;">Dynamic Packaging BOM Calculation:</div>
-          <div style="font-size: 12px; color: #52525b;">
+        <div style="background: var(--ink-100); border: 1px solid var(--border-strong); border-radius: 4px; padding: 10px; margin-bottom: 14px;">
+          <div style="font-weight: 700; color: var(--ink-950); margin-bottom: 4px;">Dynamic Packaging BOM Calculation:</div>
+          <div style="font-size: 12px; color: var(--ink-600);">
             Polybags: <strong>${state.packingWip.stage3Passed} Pcs</strong> &bull; Hangtags: <strong>${state.packingWip.stage3Passed} Pcs</strong> &bull; Silica: <strong>${state.packingWip.stage3Passed} Sachets</strong> &bull; Barcodes: <strong>${state.packingWip.stage3Passed * 2} Pcs</strong> &bull; Master Cartons: <strong>${Math.ceil(state.packingWip.stage3Passed / 30)} Pcs</strong>
           </div>
         </div>
@@ -2445,8 +2451,8 @@ function attachPackingHandlers(): void {
     const docHtml = `
       <div class="printable-slip-box">
         <div class="printable-slip-header">
-          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #09090b;">MERIDIAN WORKS &bull; PACKING HALL REQUISITION SLIP</h2>
-          <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: #52525b;">Packing Floor &bull; Packaging Trims &amp; Accessories Requisition</p>
+          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--ink-950);">MERIDIAN WORKS &bull; PACKING HALL REQUISITION SLIP</h2>
+          <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: var(--ink-600);">Packing Floor &bull; Packaging Trims &amp; Accessories Requisition</p>
         </div>
         <div class="printable-meta-grid">
           <div><span>Requisition #:</span> <strong>${mreqId}</strong></div>
@@ -2465,7 +2471,7 @@ function attachPackingHandlers(): void {
             <tr><td>STICKER_BARCODE</td><td>EAN-13 Barcode Sticker</td><td style="text-align: right; font-weight: bold;">${(qty * 2).toLocaleString()} pcs</td></tr>
           </tbody>
         </table>
-        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 18px; border-top: 1px dashed #d4d4d8; padding-top: 8px;">
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 18px; border-top: 1px dashed var(--border-strong); padding-top: 8px;">
           <span>Packing Hall Supervisor: ___________________</span>
           <span>Issued By: ___________________</span>
         </div>
@@ -2480,7 +2486,7 @@ function attachPackingHandlers(): void {
   document.getElementById('btn-wip-step4')?.addEventListener('click', () => {
     openModal('Process Stage 4: 1st Packing (Unit Polybag)', `
       <div style="font-size: 13px;">
-        <p style="margin-bottom: 12px; color: #475569;">
+        <p style="margin-bottom: 12px; color: var(--ink-600);">
           Insert silica gel sachet, attach rider hangtag, seal airtight polybag, and affix scannable barcode label.
         </p>
         <div class="form-group" style="margin-bottom: 12px;">
@@ -2513,7 +2519,7 @@ function attachPackingHandlers(): void {
   document.getElementById('btn-wip-step5')?.addEventListener('click', () => {
     openModal('Process Stage 5: 2nd Packing (Master Cartons)', `
       <div style="font-size: 13px;">
-        <p style="margin-bottom: 12px; color: #475569;">
+        <p style="margin-bottom: 12px; color: var(--ink-600);">
           Box 30 pairs per heavy 5-ply export master carton. Automatically generates tamper-evident QC seal serial numbers and computes tare weights.
         </p>
         <div class="form-group" style="margin-bottom: 12px;">
@@ -2559,7 +2565,7 @@ function attachPackingHandlers(): void {
   document.getElementById('btn-wip-new-req')?.addEventListener('click', () => {
     openModal('Generate & Print Packing Hall Requisition', `
       <div style="font-size: 13px;">
-        <p style="margin-bottom: 12px; color: #52525b;">
+        <p style="margin-bottom: 12px; color: var(--ink-600);">
           Generate a production requisition slip from the Packing Hall and print it directly.
         </p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
@@ -2611,8 +2617,8 @@ function attachPackingHandlers(): void {
       const slipHtml = `
         <div class="printable-slip-box">
           <div class="printable-slip-header">
-            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #09090b;">MERIDIAN WORKS &bull; PACKING HALL REQUISITION</h2>
-            <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: #52525b;">
+            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--ink-950);">MERIDIAN WORKS &bull; PACKING HALL REQUISITION</h2>
+            <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: var(--ink-600);">
               Packing Hall Production Draw Requisition Slip
             </p>
           </div>
@@ -2648,7 +2654,7 @@ function attachPackingHandlers(): void {
               </tr>
             </tbody>
           </table>
-          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 22px; border-top: 1px dashed #71717a; padding-top: 8px;">
+          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 22px; border-top: 1px dashed var(--ink-500); padding-top: 8px;">
             <span>Packing Hall Supervisor: ___________________</span>
             <span>Production Manager: ___________________</span>
           </div>
@@ -2704,8 +2710,8 @@ function openSizeMatrixModal(): void {
   const articles = state.dropdownOptions.articles;
 
   openModal('Dock #1 Inward Goods Receiving — Multi-Size Matrix Breakdown', `
-    <div style="font-size: 13px; color: #1e293b;">
-      <p style="margin-bottom: 12px; color: #475569;">
+    <div style="font-size: 13px; color: var(--ink-800);">
+      <p style="margin-bottom: 12px; color: var(--ink-600);">
         Physical arrival registration with breakdown across standard glove sizes (7/S, 8/M, 9/L, 10/XL, 11/XXL) and transport verification.
       </p>
 
@@ -2758,8 +2764,8 @@ function openSizeMatrixModal(): void {
         </div>
       </div>
 
-      <div style="background: #fafafa; border: 1px solid #d4d4d8; border-radius: 4px; padding: 10px; margin-bottom: 14px;">
-        <div style="font-weight: 700; color: #09090b; margin-bottom: 6px; font-size: 12px; text-transform: uppercase;">
+      <div style="background: var(--ink-50); border: 1px solid var(--border-strong); border-radius: 4px; padding: 10px; margin-bottom: 14px;">
+        <div style="font-weight: 700; color: var(--ink-950); margin-bottom: 6px; font-size: 12px; text-transform: uppercase;">
           Size Breakdown Allocation (Pairs)
         </div>
         <table class="size-matrix-table">
@@ -2770,7 +2776,7 @@ function openSizeMatrixModal(): void {
               <th>9 / L</th>
               <th>10 / XL</th>
               <th>11 / XXL</th>
-              <th style="background: #e4e4e7; color: #09090b;">Total Pairs</th>
+              <th style="background: var(--ink-200); color: var(--ink-950);">Total Pairs</th>
             </tr>
           </thead>
           <tbody>
@@ -2780,7 +2786,7 @@ function openSizeMatrixModal(): void {
               <td><input type="number" class="size-matrix-input sm-size-val" data-size="9" value="300" /></td>
               <td><input type="number" class="size-matrix-input sm-size-val" data-size="10" value="150" /></td>
               <td><input type="number" class="size-matrix-input sm-size-val" data-size="11" value="32" /></td>
-              <td style="font-weight: 800; font-size: 14px; color: #09090b;" id="sm-total-display">942</td>
+              <td style="font-weight: 800; font-size: 14px; color: var(--ink-950);" id="sm-total-display">942</td>
             </tr>
           </tbody>
         </table>
@@ -2890,8 +2896,8 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
       return `
         <div class="printable-slip-box">
           <div class="printable-slip-header">
-            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #09090b;">MERIDIAN WORKS &bull; GOODS RECEIVING NOTE (GRN)</h2>
-            <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: #52525b;">
+            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--ink-950);">MERIDIAN WORKS &bull; GOODS RECEIVING NOTE (GRN)</h2>
+            <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: var(--ink-600);">
               Dock #1 Inward Store Register &bull; Official Materials Arrival Voucher
             </p>
           </div>
@@ -2913,7 +2919,7 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
                 <th>Size 9 / L</th>
                 <th>Size 10 / XL</th>
                 <th>Size 11 / XXL</th>
-                <th style="background: #e4e4e7; color: #09090b;">Total Received</th>
+                <th style="background: var(--ink-200); color: var(--ink-950);">Total Received</th>
               </tr>
             </thead>
             <tbody>
@@ -2923,11 +2929,11 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
                 <td>300 Prs</td>
                 <td>150 Prs</td>
                 <td>32 Prs</td>
-                <td style="font-weight: 800; color: #09090b; font-size: 14px;">942 Pairs</td>
+                <td style="font-weight: 800; color: var(--ink-950); font-size: 14px;">942 Pairs</td>
               </tr>
             </tbody>
           </table>
-          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 18px; border-top: 1px dashed #d4d4d8; padding-top: 10px;">
+          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 18px; border-top: 1px dashed var(--border-strong); padding-top: 10px;">
             <span>Contractor Delivery Agent: ___________________</span>
             <span>Dock #1 Receiver: ___________________</span>
             <span>Store Manager: ___________________</span>
@@ -2936,12 +2942,12 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
       `;
     } else if (type === 'route') {
       return `
-        <div style="border: 2px dashed #18181b; padding: 16px; background: #ffffff; font-family: sans-serif; color: #09090b;">
-          <div style="text-align: center; border-bottom: 2px solid #18181b; padding-bottom: 8px; margin-bottom: 12px;">
-            <div style="font-size: 16px; font-weight: 800; color: #09090b; letter-spacing: 0.04em;">MANDATORY REWORK ROUTE TAG</div>
-            <div style="font-size: 12px; font-weight: bold; color: #52525b;">الٹریشن اور مرمت کا سرکاری روٹ کارڈ</div>
+        <div style="border: 2px dashed var(--ink-900); padding: 16px; background: var(--white); font-family: sans-serif; color: var(--ink-950);">
+          <div style="text-align: center; border-bottom: 2px solid var(--ink-900); padding-bottom: 8px; margin-bottom: 12px;">
+            <div style="font-size: 16px; font-weight: 800; color: var(--ink-950); letter-spacing: 0.04em;">MANDATORY REWORK ROUTE TAG</div>
+            <div style="font-size: 12px; font-weight: bold; color: var(--ink-600);">الٹریشن اور مرمت کا سرکاری روٹ کارڈ</div>
           </div>
-          <div class="printable-meta-grid" style="color: #09090b;">
+          <div class="printable-meta-grid" style="color: var(--ink-950);">
             <div><span>Defect Batch ID:</span> <strong>ALT-2026-0089</strong></div>
             <div><span>Origin Stage:</span> <strong>Stage 1 (Checking &amp; Inspection)</strong></div>
             <div><span>Article Name:</span> <strong>Model A9 Stealth Black</strong></div>
@@ -2951,10 +2957,10 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
             <div><span>Assigned Master Tailor:</span> <strong>Supervisor A</strong></div>
             <div><span>Max Allowed Reworks:</span> <strong>2 Cycles (Strict Scrap Rule)</strong></div>
           </div>
-          <div style="background: #f4f4f5; border: 1px solid #18181b; padding: 10px; border-radius: 4px; text-align: center; font-weight: 800; font-size: 12px; margin-top: 12px;">
+          <div style="background: var(--ink-100); border: 1px solid var(--ink-900); padding: 10px; border-radius: 4px; text-align: center; font-weight: 800; font-size: 12px; margin-top: 12px;">
             FACTORY MANDATORY RULE: EVERY REPAIRED PAIR MUST AUTO-RETURN TO STAGE 1 (CHECKING). SKIPPING STAGES IS STRICTLY SYSTEM-LOCKED.
           </div>
-          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 20px; border-top: 1px dashed #71717a; padding-top: 8px;">
+          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 20px; border-top: 1px dashed var(--ink-500); padding-top: 8px;">
             <span>Tailor Sign (درزی دستخط): _______________</span>
             <span>Bay #2 Lead: _______________</span>
             <span>Re-Checking Inspector: _______________</span>
@@ -2965,8 +2971,8 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
       return `
         <div class="printable-slip-box">
           <div class="printable-slip-header">
-            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #09090b;">MERIDIAN WORKS &bull; PACKING HALL REQUISITION SLIP</h2>
-            <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: #52525b;">Packing Floor &bull; Packaging Trims &amp; Accessories Requisition</p>
+            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--ink-950);">MERIDIAN WORKS &bull; PACKING HALL REQUISITION SLIP</h2>
+            <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: var(--ink-600);">Packing Floor &bull; Packaging Trims &amp; Accessories Requisition</p>
           </div>
           <div class="printable-meta-grid">
             <div><span>Requisition #:</span> <strong>MREQ-2026-0018</strong></div>
@@ -2985,7 +2991,7 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
               <tr><td>STICKER_BARCODE</td><td>EAN-13 Scannable Barcode Sticker</td><td style="text-align: right; font-weight: bold;">1,820 pcs</td></tr>
             </tbody>
           </table>
-          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 18px; border-top: 1px dashed #d4d4d8; padding-top: 8px;">
+          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 18px; border-top: 1px dashed var(--border-strong); padding-top: 8px;">
             <span>Packing Hall Supervisor: ___________________</span>
             <span>Issued By: ___________________</span>
           </div>
@@ -2993,10 +2999,10 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
       `;
     } else if (type === 'carton') {
       return `
-        <div style="border: 2px solid #09090b; padding: 18px; font-family: monospace; background: #ffffff;">
-          <div style="text-align: center; border-bottom: 2px solid #09090b; padding-bottom: 8px; margin-bottom: 12px;">
-            <div style="font-size: 18px; font-weight: 800; color: #09090b;">MERIDIAN WORKS &bull; EXPORT MASTER CARTON</div>
-            <div style="font-size: 11px; color: #52525b;">INTERNATIONAL EXPORT SHIPPING LABEL &bull; THERMAL DIRECT / A4</div>
+        <div style="border: 2px solid var(--ink-950); padding: 18px; font-family: monospace; background: var(--white);">
+          <div style="text-align: center; border-bottom: 2px solid var(--ink-950); padding-bottom: 8px; margin-bottom: 12px;">
+            <div style="font-size: 18px; font-weight: 800; color: var(--ink-950);">MERIDIAN WORKS &bull; EXPORT MASTER CARTON</div>
+            <div style="font-size: 11px; color: var(--ink-600);">INTERNATIONAL EXPORT SHIPPING LABEL &bull; THERMAL DIRECT / A4</div>
           </div>
           <div class="printable-meta-grid">
             <div><span>DESTINATION:</span> <strong>Northwind Safety Gear UK</strong></div>
@@ -3010,11 +3016,11 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
             <div><span>QC TAMPER SEAL:</span> <strong>FSKD-4401</strong></div>
             <div><span>AQL 1.5 AUDIT:</span> <strong>PASSED &bull; CLEARED</strong></div>
           </div>
-          <div style="border: 1px solid #09090b; padding: 10px; text-align: center; background: #fafafa; font-weight: 800; font-size: 14px; letter-spacing: 0.1em; margin-bottom: 12px;">
+          <div style="border: 1px solid var(--ink-950); padding: 10px; text-align: center; background: var(--ink-50); font-weight: 800; font-size: 14px; letter-spacing: 0.1em; margin-bottom: 12px;">
             ||||| ||||||| |||| |||||||| ||||| |||||| ||||||||<br/>
             *EAN13-5060129283741-CTN01*
           </div>
-          <div style="display: flex; justify-content: space-between; font-size: 11px; border-top: 1px dashed #09090b; padding-top: 8px;">
+          <div style="display: flex; justify-content: space-between; font-size: 11px; border-top: 1px dashed var(--ink-950); padding-top: 8px;">
             <span>Tamper Seal Status: VERIFIED &bull; INTACT</span>
             <span>Lead QA Inspector: Tariq Mehmood (QC ID: 4402)</span>
           </div>
@@ -3024,8 +3030,8 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
       return `
         <div class="printable-slip-box">
           <div class="printable-slip-header">
-            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #09090b;">COMMERCIAL EXPORT PACKING LIST MANIFEST</h2>
-            <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: #52525b;">Meridian Works &bull; Customs Clearance &amp; Container Gate Release</p>
+            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: var(--ink-950);">COMMERCIAL EXPORT PACKING LIST MANIFEST</h2>
+            <p style="margin: 2px 0 0; font-size: 11px; text-transform: uppercase; color: var(--ink-600);">Meridian Works &bull; Customs Clearance &amp; Container Gate Release</p>
           </div>
           <div class="printable-meta-grid">
             <div><span>Shipper:</span> <strong>Meridian Works (Pvt) Ltd</strong></div>
@@ -3039,7 +3045,7 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
             <div><span>Total Volume:</span> <strong>2.35 CBM</strong></div>
             <div><span>Inspection Standard:</span> <strong>AQL 1.5 Normal Single Sampling</strong></div>
           </div>
-          <div style="margin-top: 12px; font-size: 12px; background: #f4f4f5; border: 1px solid #d4d4d8; padding: 8px; border-radius: 4px; color: #09090b; font-weight: bold; text-align: center;">
+          <div style="margin-top: 12px; font-size: 12px; background: var(--ink-100); border: 1px solid var(--border-strong); padding: 8px; border-radius: 4px; color: var(--ink-950); font-weight: bold; text-align: center;">
             ✓ ALL 28 CARTONS CLEARED FOR EXPORT CONTAINER LOADING
           </div>
         </div>
@@ -3052,7 +3058,7 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
   function renderModalInner(activeTab: string) {
     return `
       <div>
-        <div style="display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; border-bottom: 1px solid #e4e4e7; padding-bottom: 8px;">
+        <div style="display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; border-bottom: 1px solid var(--ink-200); padding-bottom: 8px;">
           <button class="btn-outline doc-tab-btn ${activeTab === 'grn' ? 'btn-primary' : ''}" data-doc="grn" style="font-size: 11px; padding: 4px 8px;">1. Inward GRN Slip</button>
           <button class="btn-outline doc-tab-btn ${activeTab === 'route' ? 'btn-primary' : ''}" data-doc="route" style="font-size: 11px; padding: 4px 8px;">2. Defect Route Tag</button>
           <button class="btn-outline doc-tab-btn ${activeTab === 'mreq' ? 'btn-primary' : ''}" data-doc="mreq" style="font-size: 11px; padding: 4px 8px;">3. Packing Requisition</button>
@@ -3060,8 +3066,8 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
           <button class="btn-outline doc-tab-btn ${activeTab === 'packing' ? 'btn-primary' : ''}" data-doc="packing" style="font-size: 11px; padding: 4px 8px;">5. Export Packing List</button>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; background: #fafafa; padding: 6px 10px; border-radius: 4px; border: 1px solid #e4e4e7;">
-          <span style="font-size: 11.5px; color: #52525b; font-weight: 600;">Document Output Preview (Print Ready)</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; background: var(--ink-50); padding: 6px 10px; border-radius: 4px; border: 1px solid var(--ink-200);">
+          <span style="font-size: 11.5px; color: var(--ink-600); font-weight: 600;">Document Output Preview (Print Ready)</span>
           <div style="display: flex; gap: 6px;">
             <button class="btn-primary" id="btn-quick-print-doc" style="font-size: 11.5px; padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">
               Print Current Tab
@@ -3095,8 +3101,8 @@ function openDocumentCenterModal(defaultDoc: string = 'grn'): void {
 // Function to open ISO 2859-1 (Level II) AQL 1.5 Sampling Calculator Modal
 function openAqlCalculatorModal(): void {
   openModal('ISO 2859-1 (Level II) AQL 1.5 Sampling Calculator', `
-    <div style="font-size: 13px; color: #27272a;">
-      <p style="margin: 0 0 12px; color: #52525b;">
+    <div style="font-size: 13px; color: var(--ink-800);">
+      <p style="margin: 0 0 12px; color: var(--ink-600);">
         Automated ISO 2859-1 Normal Single Sampling Plan (AQL 1.5) decision matrix for glove export lots and carton quarantine enforcement.
       </p>
 
@@ -3117,12 +3123,12 @@ function openAqlCalculatorModal(): void {
         </div>
       </div>
 
-      <div id="aql-result-box" style="background: #fafafa; border: 1px solid #d4d4d8; border-radius: 6px; padding: 14px; margin-bottom: 16px;">
+      <div id="aql-result-box" style="background: var(--ink-50); border: 1px solid var(--border-strong); border-radius: 6px; padding: 14px; margin-bottom: 16px;">
         <!-- Dynamically calculated content -->
       </div>
 
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="font-size: 11px; color: #71717a;">Standard: ISO 2859-1 / ANSI/ASQ Z1.4</span>
+        <span style="font-size: 11px; color: var(--ink-500);">Standard: ISO 2859-1 / ANSI/ASQ Z1.4</span>
         <div style="display: flex; gap: 8px;">
           <button class="btn-outline" onclick="document.getElementById('global-modal').classList.remove('open')">Close</button>
           <button class="btn-primary" id="btn-apply-aql-audit">Apply Audit Result to Active Lot &rarr;</button>
@@ -3160,24 +3166,24 @@ function openAqlCalculatorModal(): void {
     if (resultBox) {
       resultBox.innerHTML = `
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; margin-bottom: 12px;">
-          <div style="background: #ffffff; border: 1px solid #e4e4e7; padding: 8px; border-radius: 4px;">
-            <div style="font-size: 11px; color: #71717a;">Code Letter</div>
-            <div style="font-size: 18px; font-weight: 800; color: #09090b;">${code}</div>
+          <div style="background: var(--white); border: 1px solid var(--ink-200); padding: 8px; border-radius: 4px;">
+            <div style="font-size: 11px; color: var(--ink-500);">Code Letter</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--ink-950);">${code}</div>
           </div>
-          <div style="background: #ffffff; border: 1px solid #e4e4e7; padding: 8px; border-radius: 4px;">
-            <div style="font-size: 11px; color: #71717a;">Sample Size</div>
-            <div style="font-size: 18px; font-weight: 800; color: #09090b;">${sampleSize} Prs</div>
+          <div style="background: var(--white); border: 1px solid var(--ink-200); padding: 8px; border-radius: 4px;">
+            <div style="font-size: 11px; color: var(--ink-500);">Sample Size</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--ink-950);">${sampleSize} Prs</div>
           </div>
-          <div style="background: #ffffff; border: 1px solid #e4e4e7; padding: 8px; border-radius: 4px;">
-            <div style="font-size: 11px; color: #71717a;">Accept (Ac)</div>
-            <div style="font-size: 18px; font-weight: 800; color: #09090b;">&le; ${acceptLimit}</div>
+          <div style="background: var(--white); border: 1px solid var(--ink-200); padding: 8px; border-radius: 4px;">
+            <div style="font-size: 11px; color: var(--ink-500);">Accept (Ac)</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--ink-950);">&le; ${acceptLimit}</div>
           </div>
-          <div style="background: #ffffff; border: 1px solid #e4e4e7; padding: 8px; border-radius: 4px;">
-            <div style="font-size: 11px; color: #71717a;">Reject (Re)</div>
-            <div style="font-size: 18px; font-weight: 800; color: #09090b;">&ge; ${rejectLimit}</div>
+          <div style="background: var(--white); border: 1px solid var(--ink-200); padding: 8px; border-radius: 4px;">
+            <div style="font-size: 11px; color: var(--ink-500);">Reject (Re)</div>
+            <div style="font-size: 18px; font-weight: 800; color: var(--ink-950);">&ge; ${rejectLimit}</div>
           </div>
         </div>
-        <div style="padding: 10px; border-radius: 4px; text-align: center; font-weight: 800; font-size: 13px; background: ${isPassed ? '#f4f4f5' : '#e4e4e7'}; border: 1px solid #18181b; color: #09090b;">
+        <div style="padding: 10px; border-radius: 4px; text-align: center; font-weight: 800; font-size: 13px; background: ${isPassed ? 'var(--ink-100)' : 'var(--ink-200)'}; border: 1px solid var(--ink-900); color: var(--ink-950);">
           ${isPassed ? `✓ AQL 1.5 PASSED &mdash; Found ${defects} defects &le; ${acceptLimit} allowed. Entire lot of ${lotSize.toLocaleString()} pairs approved for export.` : `✗ QUARANTINED &mdash; Found ${defects} defects &ge; ${rejectLimit} rejection limit. Lot quarantined for 100% rework.`}
         </div>
       `;

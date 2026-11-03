@@ -16,8 +16,12 @@ services:
       - PORT=3000
       - TZ=UTC
     volumes:
-      # Persist SQLite WAL database (gloves_packing.db) and online VACUUM snapshots on host
-      - ./data:/app/data
+      # SQLite (gloves_packing.db) needs POSIX locking that Windows bind mounts
+      # cannot provide under Docker Desktop (gRPC-FUSE) — a named volume gives
+      # a Linux-native filesystem and reliable disk I/O. Data persists across
+      # container rebuilds; back it up with:
+      #   docker run --rm -v meridian-works-mes_mes-data:/data -v ${PWD}:/backup alpine tar czf /backup/db-backup.tgz -C /data .
+      - mes-data:/app/data
     healthcheck:
       test:
         [
@@ -35,4 +39,7 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+volumes:
+  mes-data:
 

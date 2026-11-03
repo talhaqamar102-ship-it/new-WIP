@@ -12,4 +12,8 @@ data/*.db-shm
 *.exe
 .env
 .playwright-cli
+.agentic-dev-team
+.claude
+.claude-plugin
+skills.md
 

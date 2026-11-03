@@ -15,10 +15,20 @@ const dbPath = path.join(dataDir, 'gloves_packing.db');
 export const db = new DatabaseSync(dbPath);
 
 export function initDatabase() {
-  db.exec(`PRAGMA journal_mode = WAL;`);
-  db.exec(`PRAGMA synchronous = NORMAL;`);
-  db.exec(`PRAGMA busy_timeout = 5000;`);
-  db.exec(`PRAGMA foreign_keys = ON;`);
+  // On Windows bind mounts (Docker Desktop) even non-WAL pragma writes can fail if
+  // the volume metadata is not fully mapped; degrade gracefully instead of crashing.
+  for (const pragma of [
+    'PRAGMA journal_mode = WAL',
+    'PRAGMA synchronous = NORMAL',
+    'PRAGMA busy_timeout = 5000',
+    'PRAGMA foreign_keys = ON'
+  ]) {
+    try {
+      db.exec(`${pragma};`);
+    } catch {
+      // Keep defaults if this pragma is unsupported by the mounted volume
+    }
+  }
 
   db.exec(`
     -- 1. Customers Master
@@ -253,7 +263,8 @@ export function initDatabase() {
 
   migrateDatabase();
   seedInitialData();
-  seedDemoSheet();
+  // Clean inspection mode: demo receiving sheet disabled (no dummy transactions)
+  // seedDemoSheet();
   seedPackagingBOM();
   seedSizeBreakdowns();
 }

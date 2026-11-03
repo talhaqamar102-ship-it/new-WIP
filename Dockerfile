@@ -6,9 +6,9 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-# Install dependencies first for optimal Docker layer caching
+# Install dependencies exactly from the committed lockfile for reproducible builds
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 # Copy source code and build Vite frontend assets
 COPY . .

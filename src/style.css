@@ -1171,8 +1171,8 @@ body {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: #ffffff !important;
-    color: #09090b !important;
+    background: var(--white) !important;
+    color: var(--ink-950) !important;
   }
 
   .module-switcher-bar,
@@ -1198,8 +1198,8 @@ body {
   }
 
   body, html {
-    background: #ffffff !important;
-    color: #09090b !important;
+    background: var(--white) !important;
+    color: var(--ink-950) !important;
     font-size: 11pt !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -1226,14 +1226,14 @@ body {
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    background: #ffffff !important;
+    background: var(--white) !important;
     overflow: visible !important;
   }
 
   .modal-overlay.open .modal-header {
     background: transparent !important;
-    color: #09090b !important;
-    border-bottom: 1.5px solid #09090b !important;
+    color: var(--ink-950) !important;
+    border-bottom: 1.5px solid var(--ink-950) !important;
     margin-bottom: 12px !important;
     padding: 0 0 8px 0 !important;
   }
@@ -1241,7 +1241,7 @@ body {
   .modal-overlay.open .modal-title {
     font-size: 15pt !important;
     font-weight: 800 !important;
-    color: #09090b !important;
+    color: var(--ink-950) !important;
   }
 
   .modal-overlay.open .modal-body {
@@ -1252,8 +1252,8 @@ body {
   }
 
   .printable-slip-box {
-    border: 1.5px solid #09090b !important;
-    background: #ffffff !important;
+    border: 1.5px solid var(--ink-950) !important;
+    background: var(--white) !important;
     padding: 16px !important;
     margin-bottom: 16px !important;
     page-break-inside: avoid;
@@ -1261,7 +1261,7 @@ body {
   }
 
   .printable-slip-header {
-    border-bottom: 1.5px solid #09090b !important;
+    border-bottom: 1.5px solid var(--ink-950) !important;
   }
 
   .size-matrix-table,
@@ -1272,13 +1272,13 @@ body {
   }
 
   table th, table td {
-    border: 1px solid #d4d4d8 !important;
+    border: 1px solid var(--border-strong) !important;
     padding: 6px 8px !important;
-    color: #09090b !important;
+    color: var(--ink-950) !important;
   }
 
   table th {
-    background: #f4f4f5 !important;
+    background: var(--ink-100) !important;
     font-weight: 700 !important;
   }
 }
