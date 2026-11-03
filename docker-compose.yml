@@ -7,6 +7,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        # Read from the shell or from a git-ignored .env file. Empty means the
+        # admin gate ships locked.
+        VITE_ADMIN_PASSPHRASE: "${VITE_ADMIN_PASSPHRASE:-}"
     init: true
     restart: unless-stopped
     ports:

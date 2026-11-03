@@ -35,13 +35,23 @@ npm test
 npm run lint
 ```
 
+## Configuration
+
+The Super User gate reads its passphrase at build time from
+`VITE_ADMIN_PASSPHRASE`. Copy `.env.example` to `.env` and set a real value
+(matched case-insensitively). If it is empty, the gate stays locked. Never
+commit the real value.
+
 ## Docker
 
 ```bash
+cp .env.example .env      # set VITE_ADMIN_PASSPHRASE first
 docker compose up --build
 ```
 
-The compose file mounts `./data` for the SQLite database and health-checks `/health`.
+`docker compose` passes `VITE_ADMIN_PASSPHRASE` to the image build as a build
+arg, so it is inlined into the client bundle. The compose file keeps the SQLite
+database on the `mes-data` named volume and health-checks `/health`.
 
 ## Modules
 

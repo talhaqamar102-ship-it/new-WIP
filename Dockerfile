@@ -4,6 +4,12 @@
 # Stage 1: Build the frontend bundle
 FROM node:22-alpine AS builder
 
+# Admin gate passphrase, inlined into the client bundle at build time.
+# Supply it with `docker compose build` via the VITE_ADMIN_PASSPHRASE env var
+# (see .env.example), or directly with --build-arg. Leave empty to ship the
+# image with the admin gate locked.
+ARG VITE_ADMIN_PASSPHRASE=""
+
 WORKDIR /app
 
 # Install dependencies exactly from the committed lockfile for reproducible builds
@@ -12,7 +18,7 @@ RUN npm ci
 
 # Copy source code and build Vite frontend assets
 COPY . .
-RUN npm run build
+RUN VITE_ADMIN_PASSPHRASE="$VITE_ADMIN_PASSPHRASE" npm run build
 
 # Prune development dependencies to keep final image slim
 RUN npm prune --omit=dev

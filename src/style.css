@@ -1,5 +1,32 @@
 /* Meridian Works Manufacturing Execution System - Pure Monochrome Grayscale CSS */
+
+/* Geist, self-hosted (variable, latin subset) so the app stays fully offline.
+   OFL-1.1 licence: src/fonts/OFL.txt */
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/geist-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("./fonts/geist-mono-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Design tokens.
+   Type scale: caption 12/16, body 14/20, title 16/24, heading 20/28.
+   Spacing scale: 0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64.
+   Radius scale: 4, 6, 8. Motion follows one decelerating curve. */
 :root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 300ms;
+  --dur-base: 500ms;
+
   --ink-950: #09090b;
   --ink-900: #18181b;
   --ink-800: #27272a;
@@ -29,9 +56,9 @@
   --text-heading: #09090b;
   --radius-sm: 4px;
   --radius-md: 6px;
-  --radius-lg: 6px;
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Noto Sans Arabic";
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --radius-lg: 8px;
+  --font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Arabic", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 * {
@@ -44,8 +71,9 @@ body {
   font-family: var(--font-family);
   background-color: var(--bg-page);
   color: var(--text-main);
-  line-height: 1.5;
-  font-size: 13px;
+  line-height: 20px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -53,28 +81,28 @@ body {
 .module-switcher-bar {
   background: var(--white);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 10px 24px;
+  padding: 8px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   overflow-x: auto;
-  font-size: 12.5px;
+  font-size: 12px;
 }
 
 .module-switcher-left {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .module-switcher-label {
   color: var(--text-muted);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.05em;
-  margin-right: 6px;
+  margin-right: 8px;
 }
 
 .module-nav-btn {
@@ -82,15 +110,15 @@ body {
   color: var(--ink-600);
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
-  padding: 6px 12px;
-  font-size: 12.5px;
+  padding: 8px 12px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.15s ease;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-out);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .module-nav-btn:hover {
@@ -114,8 +142,8 @@ body {
 .view-badge {
   background: var(--ink-100);
   color: var(--ink-700);
-  font-size: 11px;
-  padding: 3px 8px;
+  font-size: 12px;
+  padding: 4px 8px;
   border-radius: var(--radius-sm);
 }
 
@@ -133,7 +161,7 @@ body {
 .header-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   user-select: none;
   cursor: pointer;
 }
@@ -151,21 +179,21 @@ body {
 }
 
 .brand-title {
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 16px;
+  font-weight: 700;
   letter-spacing: 0.03em;
   color: var(--ink-950);
 }
 
 .brand-subtitle {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text-muted);
 }
 
 .header-center-info {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--ink-700);
   letter-spacing: 0.01em;
@@ -203,7 +231,7 @@ body {
 }
 
 .sub-header-title {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink-900);
 }
@@ -215,6 +243,7 @@ body {
 }
 
 .system-date-label {
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 600;
   color: var(--ink-600);
@@ -225,9 +254,9 @@ body {
 .badge-dock-1,
 .badge-alteration-bay,
 .badge-final-qc {
-  padding: 3px 10px;
+  padding: 4px 8px;
   border-radius: var(--radius-sm);
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.01em;
   background-color: var(--ink-100);
@@ -237,7 +266,7 @@ body {
 
 /* Main Content Wrapper */
 .main-viewport {
-  padding: 20px 24px;
+  padding: 24px 24px;
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
@@ -251,11 +280,11 @@ body {
   border: 1px solid var(--border-strong);
   color: var(--ink-900);
   border-radius: var(--radius-md);
-  padding: 10px 14px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 12.5px;
+  gap: 8px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -269,7 +298,7 @@ body {
   background: var(--white);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 14px 18px;
+  padding: 16px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -287,7 +316,7 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--ink-700);
   flex-wrap: wrap;
 }
@@ -299,7 +328,7 @@ body {
 .order-summary-bottom {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   font-size: 12px;
   color: var(--ink-600);
   border-top: 1px solid var(--border-subtle);
@@ -325,7 +354,7 @@ body {
 }
 
 .panel-card-title {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink-950);
   display: flex;
@@ -337,7 +366,7 @@ body {
   background-color: var(--ink-100);
   color: var(--ink-700);
   border: 1px solid var(--border-subtle);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   padding: 2px 8px;
   border-radius: var(--radius-sm);
@@ -348,7 +377,7 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 16px 18px;
+  padding: 16px 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -368,7 +397,7 @@ body {
 }
 
 .form-group label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ink-600);
   white-space: nowrap;
@@ -377,13 +406,13 @@ body {
 .form-input, .form-select {
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  padding: 6px 10px;
-  font-size: 13px;
+  padding: 8px 12px;
+  font-size: 14px;
   font-family: inherit;
   color: var(--ink-950);
   background-color: var(--white);
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color var(--dur-fast) var(--ease-out);
 }
 
 .form-input:focus, .form-select:focus {
@@ -402,7 +431,7 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   margin-top: 4px;
 }
 
@@ -442,21 +471,21 @@ body {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 12.5px;
+  font-size: 12px;
 }
 
 .data-table th {
   background-color: var(--ink-50);
   color: var(--ink-700);
   font-weight: 600;
-  padding: 9px 12px;
+  padding: 8px 12px;
   border-bottom: 1px solid var(--border-strong);
   white-space: nowrap;
-  font-size: 11.5px;
+  font-size: 12px;
 }
 
 .data-table td {
-  padding: 9px 12px;
+  padding: 8px 12px;
   border-bottom: 1px solid var(--border-subtle);
   color: var(--ink-900);
   vertical-align: middle;
@@ -481,9 +510,9 @@ body {
 
 .table-empty-cell {
   text-align: center;
-  padding: 28px 16px;
+  padding: 32px 16px;
   color: var(--text-muted);
-  font-size: 12.5px;
+  font-size: 12px;
 }
 
 /* Status Indicators - Clean Monochrome */
@@ -499,7 +528,7 @@ body {
   gap: 4px;
   padding: 2px 8px;
   border-radius: var(--radius-sm);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
   background-color: var(--ink-100);
@@ -516,9 +545,9 @@ body {
 .badge-aql-passed {
   background-color: var(--ink-900);
   color: var(--white);
-  padding: 5px 12px;
+  padding: 4px 12px;
   border-radius: var(--radius-sm);
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.03em;
   display: inline-block;
@@ -532,15 +561,15 @@ body {
   color: var(--white);
   border: 1px solid var(--ink-950);
   border-radius: var(--radius-sm);
-  padding: 6px 14px;
-  font-size: 12.5px;
+  padding: 8px 12px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.15s ease;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-out);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .btn-primary:hover,
@@ -554,15 +583,15 @@ body {
   color: var(--ink-800);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  padding: 6px 12px;
-  font-size: 12.5px;
+  padding: 8px 12px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.15s ease;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-out);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .btn-outline:hover {
@@ -575,8 +604,8 @@ body {
   background-color: var(--white);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  padding: 3px 8px;
-  font-size: 11px;
+  padding: 4px 8px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--ink-800);
   cursor: pointer;
@@ -604,14 +633,14 @@ body {
   padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .checklist-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 8px 10px;
+  gap: 8px;
+  padding: 8px 8px;
   border-radius: var(--radius-sm);
   background-color: var(--ink-50);
   border: 1px solid var(--border-subtle);
@@ -622,12 +651,12 @@ body {
   height: 18px;
   background-color: var(--ink-900);
   color: var(--white);
-  border-radius: 3px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
   flex-shrink: 0;
   cursor: pointer;
 }
@@ -639,13 +668,13 @@ body {
 }
 
 .checklist-title {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ink-950);
 }
 
 .checklist-status-pass {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ink-700);
 }
@@ -655,7 +684,7 @@ body {
   background-color: var(--ink-50);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
-  padding: 12px 14px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -670,18 +699,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 14px;
   flex-shrink: 0;
 }
 
 .stamp-text-title {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--ink-950);
 }
 
 .stamp-text-sub {
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--ink-600);
 }
 
@@ -690,7 +719,7 @@ body {
   background-color: var(--white);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 10px 16px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -701,7 +730,7 @@ body {
 .footer-stats-left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   font-size: 12px;
   color: var(--ink-600);
   flex-wrap: wrap;
@@ -734,7 +763,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  padding: 20px;
+  padding: 24px;
 }
 
 .modal-overlay.open {
@@ -749,7 +778,7 @@ body {
   width: 100%;
   box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.18);
   overflow: hidden;
-  animation: modalFadeIn 0.15s ease-out;
+  animation: modalFadeIn var(--dur-base) var(--ease-out);
 }
 
 @keyframes modalFadeIn {
@@ -760,14 +789,14 @@ body {
 .modal-header {
   background-color: var(--ink-900);
   color: var(--white);
-  padding: 12px 18px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .modal-title {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -785,8 +814,8 @@ body {
 }
 
 .modal-body {
-  padding: 18px;
-  font-size: 13px;
+  padding: 16px;
+  font-size: 14px;
   color: var(--ink-800);
   line-height: 1.5;
   max-height: 72vh;
@@ -794,7 +823,7 @@ body {
 }
 
 .modal-footer {
-  padding: 12px 18px;
+  padding: 12px 16px;
   border-top: 1px solid var(--border-subtle);
   display: flex;
   justify-content: flex-end;
@@ -817,12 +846,12 @@ body {
 .toast-message {
   background: var(--ink-950);
   color: var(--white);
-  padding: 10px 16px;
+  padding: 8px 16px;
   border-radius: var(--radius-sm);
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 500;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: toastIn 0.15s ease-out;
+  animation: toastIn var(--dur-base) var(--ease-out);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -839,13 +868,13 @@ body {
   background: var(--white);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
+  padding: 12px;
   flex: 1;
   min-width: 175px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: border-color 0.15s ease;
+  transition: border-color var(--dur-fast) var(--ease-out);
 }
 
 .pipeline-stage-card:hover {
@@ -853,14 +882,14 @@ body {
 }
 
 .pipeline-stage-header {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--ink-950);
   text-transform: uppercase;
   letter-spacing: 0.03em;
   margin-bottom: 8px;
   border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 5px;
+  padding-bottom: 4px;
 }
 
 .pipeline-stage-metric {
@@ -869,7 +898,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  gap: 4px;
+  margin-bottom: 4px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -889,8 +919,8 @@ body {
 
 .size-matrix-table th {
   background: var(--ink-100);
-  padding: 6px 10px;
-  font-size: 11px;
+  padding: 8px 8px;
+  font-size: 12px;
   font-weight: 700;
   text-align: center;
   border: 1px solid var(--border-strong);
@@ -898,7 +928,7 @@ body {
 }
 
 .size-matrix-table td {
-  padding: 4px 6px;
+  padding: 4px 8px;
   border: 1px solid var(--border-strong);
   text-align: center;
   font-variant-numeric: tabular-nums;
@@ -907,10 +937,11 @@ body {
 .size-matrix-input {
   width: 100%;
   text-align: center;
-  padding: 5px 4px;
+  padding: 4px 4px;
   border: 1px solid var(--border-strong);
-  border-radius: 3px;
-  font-size: 12.5px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
   font-weight: 600;
   color: var(--ink-950);
 }
@@ -924,7 +955,7 @@ body {
 .printable-slip-box {
   background: var(--white);
   border: 1.5px solid var(--ink-950);
-  padding: 18px 22px;
+  padding: 16px 24px;
   border-radius: 4px;
   font-family: var(--font-family);
   color: var(--ink-950);
@@ -933,8 +964,8 @@ body {
 .printable-slip-header {
   text-align: center;
   border-bottom: 1.5px solid var(--ink-950);
-  padding-bottom: 10px;
-  margin-bottom: 14px;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .printable-meta-grid {
@@ -942,7 +973,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 8px 16px;
   font-size: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .printable-meta-grid div {
@@ -961,7 +992,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  padding: 20px;
+  padding: 24px;
 }
 
 .secret-auth-card {
@@ -978,21 +1009,21 @@ body {
 .secret-auth-header {
   background: var(--ink-900);
   color: var(--white);
-  padding: 12px 18px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .secret-auth-title {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--white);
 }
 
 .secret-auth-tag {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ink-300);
   text-transform: uppercase;
@@ -1000,7 +1031,7 @@ body {
 }
 
 .secret-auth-body {
-  padding: 18px 20px;
+  padding: 16px 24px;
 }
 
 .secret-auth-input {
@@ -1010,10 +1041,10 @@ body {
   border-radius: var(--radius-sm);
   color: var(--text-heading);
   padding: 8px 12px;
-  font-size: 13.5px;
+  font-size: 14px;
   font-family: var(--font-family);
   outline: none;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .secret-auth-input:focus {
@@ -1021,7 +1052,7 @@ body {
 }
 
 .secret-auth-footer {
-  padding: 10px 20px;
+  padding: 8px 24px;
   background: var(--ink-50);
   border-top: 1px solid var(--border-subtle);
   display: flex;
@@ -1040,30 +1071,31 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 12px 14px;
+  padding: 12px 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .admin-kpi-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-muted);
 }
 
 .admin-kpi-value {
+  font-family: var(--font-mono);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text-heading);
   margin-top: 4px;
   font-variant-numeric: tabular-nums;
 }
 
 .admin-kpi-sub {
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--text-muted);
-  margin-top: 3px;
+  margin-top: 4px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1075,7 +1107,7 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 5px 6px;
+  padding: 4px 8px;
   overflow-x: auto;
 }
 
@@ -1089,8 +1121,8 @@ body {
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
-  padding: 6px 14px;
-  font-size: 12.5px;
+  padding: 8px 12px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-muted);
   cursor: pointer;
@@ -1109,7 +1141,7 @@ body {
 }
 
 .admin-meta-caption {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
@@ -1118,8 +1150,8 @@ body {
 .admin-tag-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 3px 9px;
+  gap: 8px;
+  padding: 4px 8px;
   background: var(--ink-50);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
@@ -1132,7 +1164,7 @@ body {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   line-height: 1;
@@ -1141,6 +1173,46 @@ body {
 
 .admin-tag-remove:hover {
   color: var(--ink-950);
+}
+
+/* Interaction states: hover, active, focus, disabled */
+button {
+  font-family: inherit;
+}
+
+button:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+button:disabled,
+.btn-primary:disabled,
+.btn-outline:disabled,
+.btn-success:disabled,
+.btn-dark:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.form-input:focus-visible,
+.form-select:focus-visible,
+.size-matrix-input:focus-visible,
+.secret-auth-input:focus-visible,
+button:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ink-950);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 #direct-print-stage {
@@ -1240,7 +1312,7 @@ body {
 
   .modal-overlay.open .modal-title {
     font-size: 15pt !important;
-    font-weight: 800 !important;
+    font-weight: 700 !important;
     color: var(--ink-950) !important;
   }
 
@@ -1273,7 +1345,7 @@ body {
 
   table th, table td {
     border: 1px solid var(--border-strong) !important;
-    padding: 6px 8px !important;
+    padding: 8px 8px !important;
     color: var(--ink-950) !important;
   }
 
