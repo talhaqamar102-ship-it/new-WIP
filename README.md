@@ -28,6 +28,11 @@ The database is created schema-first and seeded with demo records on first run u
 
 Health check: `GET /health`.
 
+On Windows, `Start-Packing-System.bat` (or the compiled `Program.cs` launcher)
+starts the same app and opens `http://127.0.0.1:3000`. If a server is already
+healthy on that port (for example the Docker container), it reuses it instead
+of starting a second process.
+
 ## Tests
 
 ```bash

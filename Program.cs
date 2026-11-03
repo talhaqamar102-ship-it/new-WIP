@@ -13,22 +13,28 @@ namespace PackingLauncher {
             Application.SetCompatibleTextRenderingDefault(false);
 
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            string serverUrl = "http://127.0.0.1:3050";
+            string serverUrl = "http://127.0.0.1:3000";
 
             bool isRunning = CheckServerOnline(serverUrl + "/health");
 
             if (!isRunning) {
                 string nodePath = FindNodeExecutable();
-                string serverScript = Path.Combine(baseDir, "src", "server.js");
+                string serverScript = Path.Combine(baseDir, "server.ts");
+                string tsxCli = Path.Combine(baseDir, "node_modules", "tsx", "dist", "cli.mjs");
 
                 if (!File.Exists(serverScript)) {
                     MessageBox.Show("Could not find backend server script at:\n" + serverScript, "Launcher Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
+                if (!File.Exists(tsxCli)) {
+                    MessageBox.Show("Dependencies are not installed.\nRun \"npm install\" in:\n" + baseDir, "Launcher Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 ProcessStartInfo psi = new ProcessStartInfo {
                     FileName = nodePath,
-                    Arguments = "\"" + serverScript + "\"",
+                    Arguments = "\"" + tsxCli + "\" \"" + serverScript + "\"",
                     WorkingDirectory = baseDir,
                     CreateNoWindow = true,
                     UseShellExecute = false,
