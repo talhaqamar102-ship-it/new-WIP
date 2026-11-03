@@ -57,19 +57,32 @@ namespace PackingLauncher {
                 }
             }
 
-            string edgePath = FindEdgeExecutable();
+            string chromiumPath = FindChromiumBrowser();
+            string firefoxPath = FindFirefoxBrowser();
             bool launched = false;
+            long ticks = DateTime.UtcNow.Ticks;
 
-            if (!string.IsNullOrEmpty(edgePath) && File.Exists(edgePath)) {
+            if (!string.IsNullOrEmpty(chromiumPath) && File.Exists(chromiumPath)) {
                 string profileDir = Path.Combine(baseDir, "data", "app-profile");
-                long ticks = DateTime.UtcNow.Ticks;
-                ProcessStartInfo edgePsi = new ProcessStartInfo {
-                    FileName = edgePath,
+                ProcessStartInfo chromiumPsi = new ProcessStartInfo {
+                    FileName = chromiumPath,
                     Arguments = "--app=" + serverUrl + "/?t=" + ticks + " --window-size=1480,920 --disable-cache --user-data-dir=\"" + profileDir + "\"",
                     UseShellExecute = false
                 };
                 try {
-                    Process.Start(edgePsi);
+                    Process.Start(chromiumPsi);
+                    launched = true;
+                } catch {}
+            }
+
+            if (!launched && !string.IsNullOrEmpty(firefoxPath) && File.Exists(firefoxPath)) {
+                ProcessStartInfo firefoxPsi = new ProcessStartInfo {
+                    FileName = firefoxPath,
+                    Arguments = "-new-window \"" + serverUrl + "/?t=" + ticks + "\"",
+                    UseShellExecute = false
+                };
+                try {
+                    Process.Start(firefoxPsi);
                     launched = true;
                 } catch {}
             }
@@ -109,10 +122,25 @@ namespace PackingLauncher {
             return "node.exe";
         }
 
-        static string FindEdgeExecutable() {
+        static string FindChromiumBrowser() {
             string[] candidates = new string[] {
                 @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
-                @"C:\Program Files\Microsoft\Edge\Application\msedge.exe"
+                @"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+                @"C:\Program Files\Google\Chrome\Application\chrome.exe",
+                @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Google\Chrome\Application\chrome.exe"),
+                @"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
+            };
+            foreach (string c in candidates) {
+                if (File.Exists(c)) return c;
+            }
+            return null;
+        }
+
+        static string FindFirefoxBrowser() {
+            string[] candidates = new string[] {
+                @"C:\Program Files\Mozilla Firefox\firefox.exe",
+                @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
             };
             foreach (string c in candidates) {
                 if (File.Exists(c)) return c;

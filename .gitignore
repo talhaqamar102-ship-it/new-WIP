@@ -5,6 +5,7 @@ data/
 coverage/
 .DS_Store
 *.log
+*.exe
 .env*
 !.env.example
 
